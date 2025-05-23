@@ -22,6 +22,13 @@ namespace DataPorter.Service
             return _mapper.Map<IEnumerable<CustomerBrowseDto>>(customers);
 
         }
+
+        public async Task<CustomerUpdateDto> GetCustomer(string id)
+        {
+            var customer = await SearchCustomer(id);
+            return _mapper.Map<CustomerUpdateDto>(customer);
+        }
+
         public async Task CreateAsync(CustomerCreateDto dto)
         {
             if (await _unitOfWork.Customers.GetByIdAsync(dto.Id) is not null)
@@ -39,11 +46,7 @@ namespace DataPorter.Service
         public async Task UpdateAsync(CustomerUpdateDto dto)
         {
 
-            var customer = await _unitOfWork.Customers.GetByIdAsync(dto.Id);
-            if (customer is null)
-            {
-                throw new Exception($"Customer with id '{dto.Id}' not found.");
-            }
+            var customer = await SearchCustomer(dto.Id);
             if (dto.CompanyId is not null && await _unitOfWork.Companies.GetByIdAsync(dto.CompanyId) is null)
             {
                 throw new Exception($"Company with id '{dto.CompanyId}' not found.");
@@ -61,6 +64,16 @@ namespace DataPorter.Service
             }
             _unitOfWork.Customers.Delete(customer);
             await _unitOfWork.SaveAsync();
+        }
+
+        private async Task<Customer> SearchCustomer(string id)
+        {
+            var customer = await _unitOfWork.Customers.GetByIdAsync(id);
+            if (customer is null)
+            {
+                throw new Exception($"Customer with id '{id}' not found.");
+            }
+            return customer;
         }
     }
 }

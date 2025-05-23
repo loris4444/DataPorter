@@ -16,9 +16,10 @@ namespace DataPorter.Mapping
 
             CreateMap<CustomerCreateDto, Customer>()
                 .ForMember(dest => dest.Company, opt => opt.Ignore());
-            
+
             CreateMap<CustomerUpdateDto, Customer>()
                 .ForMember(dest => dest.Company, opt => opt.Ignore())
+                .ReverseMap()
                 .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
         }
     }

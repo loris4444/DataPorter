@@ -17,6 +17,10 @@ public class CustomerController : ControllerBase
     public async Task<ActionResult<IEnumerable<CustomerBrowseDto>>> Get()
         => Ok(await _service.GetAllAsync());
 
+    [HttpGet("{id}")]
+    public async Task<ActionResult<CustomerBrowseDto>> GetCustomer(string id)
+    => Ok(await _service.GetCustomer(id));
+
     [HttpPost]
     public async Task<IActionResult> Create(CustomerCreateDto dto)
     {
