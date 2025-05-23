@@ -24,7 +24,7 @@ namespace DataPorter.Data
                 Id = "Sdd",
                 Name = "OpenAI",
                 Location = "San Francisco",
-                FoundationDate = new DateTime(2015, 12, 11),
+                FoundationDate = new DateOnly(2015, 12, 11),
                 Employees = 375,
                 Revenue = 10000000.0,
                 Customers = new List<Customer>()
@@ -34,7 +34,7 @@ namespace DataPorter.Data
                 Id = "Xkg",
                 Name = "Microsoft",
                 Location = "Redmond",
-                FoundationDate = new DateTime(1975, 4, 4),
+                FoundationDate = new DateOnly(1975, 4, 4),
                 Employees = 220000,
                 Revenue = 198000000000.0,
                 Customers = new List<Customer>()

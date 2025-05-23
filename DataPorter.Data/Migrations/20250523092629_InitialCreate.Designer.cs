@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataPorter.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250522083931_InitialCreate")]
+    [Migration("20250523092629_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -33,8 +33,8 @@ namespace DataPorter.Data.Migrations
                     b.Property<int>("Employees")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("FoundationDate")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly>("FoundationDate")
+                        .HasColumnType("date");
 
                     b.Property<string>("Location")
                         .IsRequired()
@@ -56,7 +56,7 @@ namespace DataPorter.Data.Migrations
                         {
                             Id = "Sdd",
                             Employees = 375,
-                            FoundationDate = new DateTime(2015, 12, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FoundationDate = new DateOnly(2015, 12, 11),
                             Location = "San Francisco",
                             Name = "OpenAI",
                             Revenue = 10000000.0
@@ -65,7 +65,7 @@ namespace DataPorter.Data.Migrations
                         {
                             Id = "Xkg",
                             Employees = 220000,
-                            FoundationDate = new DateTime(1975, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FoundationDate = new DateOnly(1975, 4, 4),
                             Location = "Redmond",
                             Name = "Microsoft",
                             Revenue = 198000000000.0
@@ -77,8 +77,8 @@ namespace DataPorter.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("Birthdate")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly>("Birthdate")
+                        .HasColumnType("date");
 
                     b.Property<string>("CompanyId")
                         .IsRequired()

@@ -20,7 +20,7 @@ namespace DataPorter.Data.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FoundationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FoundationDate = table.Column<DateOnly>(type: "date", nullable: false),
                     Employees = table.Column<int>(type: "int", nullable: false),
                     Revenue = table.Column<double>(type: "float", nullable: false)
                 },
@@ -37,7 +37,7 @@ namespace DataPorter.Data.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Birthdate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Birthdate = table.Column<DateOnly>(type: "date", nullable: false),
                     CompanyId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
@@ -56,8 +56,8 @@ namespace DataPorter.Data.Migrations
                 columns: new[] { "Id", "Employees", "FoundationDate", "Location", "Name", "Revenue" },
                 values: new object[,]
                 {
-                    { "Sdd", 375, new DateTime(2015, 12, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "San Francisco", "OpenAI", 10000000.0 },
-                    { "Xkg", 220000, new DateTime(1975, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), "Redmond", "Microsoft", 198000000000.0 }
+                    { "Sdd", 375, new DateOnly(2015, 12, 11), "San Francisco", "OpenAI", 10000000.0 },
+                    { "Xkg", 220000, new DateOnly(1975, 4, 4), "Redmond", "Microsoft", 198000000000.0 }
                 });
 
             migrationBuilder.CreateIndex(

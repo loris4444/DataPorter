@@ -13,7 +13,7 @@ namespace DataPorter.Dto
         [EmailAddress, Required]
         public required string Email { get; set; }
         [Required]
-        public DateTime Birthdate { get; set; }
+        public required string Birthdate { get; set; }
         [Required]
         public required string CompanyId { get; set; }
     }
